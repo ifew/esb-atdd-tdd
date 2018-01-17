@@ -16,8 +16,11 @@ namespace web.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Confirmation (RegisterModel registerModel)
+        public IActionResult Confirmation(RegisterModel registerModel)
         {
+            ViewData["registerModel.txt_CardNo"] = registerModel.txt_CardNo;
+            ViewData["registerModel.txt_CardID"] = registerModel.txt_CardID;
+            ViewData["registerModel.txt_BirthDate"] = registerModel.txt_BirthDate;
             return View();
         }
 
