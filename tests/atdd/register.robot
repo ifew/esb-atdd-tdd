@@ -4,7 +4,7 @@ Test Teardown   Close Browser
 
 *** Variables ***
 ${BROWSER}    chrome
-${URL}  http://localhost:5001 
+${URL}  http://localhost:5000
 
 *** Test Cases ***
 การลงทะเบียนใช้ umayplus+ ได้สำเร็จ Odterm เท่ากับ 0
