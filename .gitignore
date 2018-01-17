@@ -35,6 +35,7 @@ bld/
 [Bb]uild[Ll]og.*
 tests/atdd/*.png
 tests/atdd/*.html
+tests/atdd/*.xml
 
 # NUNIT
 *.VisualState.xml
