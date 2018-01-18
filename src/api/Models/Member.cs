@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Models
 {
-    [Table("Users")]
+    [Table("members")]
     public class Member
     {
         [Column("fullname")]
