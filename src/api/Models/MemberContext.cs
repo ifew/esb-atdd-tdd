@@ -9,6 +9,6 @@ namespace api.Models
         {
         }
 
-        public DbSet<Member> Member { get; set; }
+        public DbSet<Member> Members { get; set; }
     }
 }

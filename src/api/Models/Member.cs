@@ -7,6 +7,9 @@ namespace api.Models
     [Table("members")]
     public class Member
     {
+        [Column("id")]
+        public string Id { get; }
+
         [Column("fullname")]
         public string Fullname { get; set; }
 
