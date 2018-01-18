@@ -8,5 +8,7 @@ namespace api.Models
             base(dbContextOptions)
         {
         }
+
+        public DbSet<Member> Member { get; set; }
     }
 }
