@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using api.Models;
+using api.Services;
 
 namespace api
 {
@@ -26,6 +27,7 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MemberContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<MemberService, MemberService>();
             services.AddMvc();
         }
 

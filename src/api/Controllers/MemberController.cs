@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Models;
+using api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -10,11 +11,11 @@ namespace api.Controllers
     [Route("api/[controller]")]
     public class MemberController : Controller
     {
-        private readonly MemberContext _context;
+        private readonly MemberService _service;
 
-        public MemberController(MemberContext context)
+        public MemberController(MemberService service)
         {
-            _context = context;
+            _service = service;
         }
 
         [HttpGet]
@@ -23,17 +24,17 @@ namespace api.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        [Route("all")]
-        public IActionResult All()
-        {
-            JsonResult result = Json(_context.Members.ToList());
-            return result;
-        }
+        //[Route("all")]
+        //public IActionResult All()
+        //{
+        //    JsonResult result = Json(_service.Members.ToList());
+        //    return result;
+        //}
 
-        [Route("info")]
-        public IActionResult Info(string id)
+        [HttpGet("/info/{id}")]
+        public IActionResult GetInfo(string id)
         {
-            var result = _context.Get_Member_Information_By_ID(id);
+            var result = _service.Get_Member_Information_By_ID(id);
             return new ObjectResult(result);
         }
     }

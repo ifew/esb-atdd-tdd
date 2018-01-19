@@ -6,21 +6,22 @@ namespace api.Services
 {
     public class MemberService
     {
-        private readonly MemberContext memberContext;
-        public MemberService(MemberContext memberContext)
+        private readonly MemberContext _context;
+
+        public MemberService(MemberContext context)
         {
-            this.memberContext = memberContext;
+            _context = context;
         }
 
         public Member Get_Member_Information_By_ID(string id)
         {
             try
             {
-                return memberContext.Members.Single(m => Equals(m.Id, 1));
+                return _context.Members.Single(m => m.Id == int.Parse(id));
             }
             catch (System.Exception)
             {
-                throw new Exception("Wrong username or password");
+                throw new Exception("Wrong ID");
             }
         }
     }
