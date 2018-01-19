@@ -31,5 +31,11 @@ namespace api.Controllers
             return new ObjectResult(result);
             //return new ObjectResult("1") ;
         }
+
+        [HttpGet("all", Name = "GetAll")]
+        public IEnumerable<Member> GetAll()
+        {
+            return _service.List_Members();
+        }
     }
 }

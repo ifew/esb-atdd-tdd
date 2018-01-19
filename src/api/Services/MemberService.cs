@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using api.Models;
 
@@ -17,5 +18,11 @@ namespace api.Services
         {
             return _context.Members.Single(m => m.Id == int.Parse(id));
         }
+
+        public IEnumerable<Member> List_Members()
+        {
+            return _context.Members.ToList();
+        }
     }
+
 }
