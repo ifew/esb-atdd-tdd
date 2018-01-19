@@ -8,8 +8,8 @@ namespace api.Models
     [Table("members")]
     public class Member
     {
-        [Column("id"), Key]
-        public int Id { get; }
+        [Column("id")]
+        public int Id { get; set; }
 
         [Column("fullname")]
         public string Fullname { get; set; }
@@ -25,5 +25,9 @@ namespace api.Models
 
         [Column("mobilephone")]
         public string Mobilephone { get; set; }
+
     }
+
+
+
 }
