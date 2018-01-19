@@ -22,5 +22,6 @@
   <ItemGroup>
     <Compile Remove="Models\CustomerModel.cs" />
     <Compile Remove="Controllers\ValuesController %28copy%29.cs" />
+    <Compile Remove="Models\IMemberContext.cs" />
   </ItemGroup>
 </Project>
