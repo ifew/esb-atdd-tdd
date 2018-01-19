@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,8 +8,8 @@ namespace api.Models
     [Table("members")]
     public class Member
     {
-        [Column("id")]
-        public string Id { get; }
+        [Column("id"), Key]
+        public int Id { get; }
 
         [Column("fullname")]
         public string Fullname { get; set; }
