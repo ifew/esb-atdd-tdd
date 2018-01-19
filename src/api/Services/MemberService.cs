@@ -15,14 +15,7 @@ namespace api.Services
 
         public Member Get_Member_Information_By_ID(string id)
         {
-            try
-            {
-                return _context.Members.Single(m => m.Id == int.Parse(id));
-            }
-            catch (System.Exception)
-            {
-                throw new Exception("Wrong ID");
-            }
+            return _context.Members.Single(m => m.Id == int.Parse(id));
         }
     }
 }

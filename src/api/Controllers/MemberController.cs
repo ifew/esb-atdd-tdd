@@ -21,21 +21,15 @@ namespace api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "Hi this MemberService" };
         }
 
-        //[Route("all")]
-        //public IActionResult All()
-        //{
-        //    JsonResult result = Json(_service.Members.ToList());
-        //    return result;
-        //}
-
-        [HttpGet("/info/{id}")]
-        public IActionResult GetInfo(string id)
+        [HttpGet("info/{id}", Name = "GetInfo")]
+        public IActionResult GetById(string id)
         {
             var result = _service.Get_Member_Information_By_ID(id);
             return new ObjectResult(result);
+            //return new ObjectResult("1") ;
         }
     }
 }
