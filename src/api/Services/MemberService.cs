@@ -16,7 +16,7 @@ namespace api.Services
 
         public Member Get_Member_Information_By_ID(string id)
         {
-            return _context.Members.Single(m => m.Id == int.Parse(id));
+            return _context.Members.Where(m => m.Id == int.Parse(id)).FirstOrDefault();
         }
 
         public IEnumerable<Member> List_Members()
