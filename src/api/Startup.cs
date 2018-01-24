@@ -11,6 +11,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using api.Models;
 using api.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace api
 {
@@ -28,6 +31,21 @@ namespace api
         {
             services.AddDbContext<MemberContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<MemberService, MemberService>();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = Configuration["Jwt:Issuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                    };
+                });
+
             services.AddMvc();
         }
 
@@ -38,7 +56,9 @@ namespace api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
+            app.UseAuthentication();
+            
             app.UseMvc();
         }
     }
