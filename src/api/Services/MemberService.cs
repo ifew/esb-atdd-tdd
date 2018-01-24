@@ -23,6 +23,14 @@ namespace api.Services
         {
             return _context.Members.ToList();
         }
+
+        public Member Add_Members(Member data)
+        {
+            _context.Add(data);
+            _context.SaveChanges();
+
+            return data;
+        }
     }
 
 }

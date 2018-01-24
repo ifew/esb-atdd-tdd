@@ -50,7 +50,15 @@ namespace api.Controllers
                 Mobilephone = registerModel.txt_MobileNo
             };
 
-            return new ObjectResult(data); 
+            var result = _service.Add_Members(data);
+
+            return new ObjectResult(result);
+        }
+
+        [HttpGet("test")]
+        public IEnumerable<string> test()
+        {
+            return new string[] { "Hi this MemberService" };
         }
         
     }
