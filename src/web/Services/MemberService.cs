@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using web.Models;
 
@@ -13,7 +14,7 @@ namespace web.Services
             var result = Call(url, registerModel);
         }
 
-        static async Task<String> Call(string url, object data)
+        static async Task<string> Call(string url, object data)
         {
             HttpClient client = new HttpClient();
 

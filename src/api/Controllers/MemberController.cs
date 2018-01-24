@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using api.Models;
 using api.Services;
 using Microsoft.AspNetCore.Mvc;
+using api.Models;
 
 namespace api.Controllers
 {
@@ -37,5 +37,21 @@ namespace api.Controllers
         {
             return _service.List_Members();
         }
+
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] RegisterModel registerModel)
+        {
+            var data = new Member
+            {
+                Fullname = "Call from API",
+                Card_no = registerModel.txt_CardNo,
+                Personal_id = registerModel.txt_CardID,
+                Birthday = DateTime.Parse(registerModel.txt_BirthDate),
+                Mobilephone = registerModel.txt_MobileNo
+            };
+
+            return new ObjectResult(data); 
+        }
+        
     }
 }
