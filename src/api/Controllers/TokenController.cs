@@ -52,9 +52,9 @@ namespace api.Controllers
      {
         UserModel user = null;
 
-        if (login.Username == "ifew" && login.Password == "1234")
+        if (login.Username == _config["Jwt:AppAuthUsername"] && login.Password == _config["Jwt:AppAuthPassword"])
         {
-            user = new UserModel { Name = "iFew", Email = "ifew@domain.com"};
+            user = new UserModel { Name = _config["Jwt:AppAuthUsername"], Email = _config["Jwt:AppAuthEmail"]};
         }
         return user;
      }

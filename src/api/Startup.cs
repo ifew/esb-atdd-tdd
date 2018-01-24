@@ -46,6 +46,16 @@ namespace api
                     };
                 });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                .Build());
+            });
+
             services.AddMvc();
         }
 
@@ -56,9 +66,10 @@ namespace api
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseAuthentication();
-            
+            app.UseCors("CorsPolicy");
+
             app.UseMvc();
         }
     }
