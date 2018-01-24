@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using web.Models;
+using web.Services;
 
 namespace web.Controllers
 {
@@ -30,6 +31,9 @@ namespace web.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult SaveData(RegisterModel registerModel)
         {
+            var memberService = new MemberService();
+            memberService.Register(registerModel);
+
             return RedirectToAction("Complete");
         }
 
