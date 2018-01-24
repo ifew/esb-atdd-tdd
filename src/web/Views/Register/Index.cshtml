@@ -9,10 +9,11 @@
         @Html.Partial("_Header")
         <div asp-validation-summary="All" class="text-danger"></div>
         <form asp-action="Confirmation" asp-controller="Register">
-        <label for="txt_CardNo">Card No: <input type="text" id="txt_CardNo" name="txt_CardNo" value=""></label>
-        <label for="txt_CardID">Personal ID: <input type="text" id="txt_CardID" name="txt_CardID" value=""></label>
-        <label for="txt_BirthDate">Card No: <input type="text" id="txt_BirthDate" name="txt_BirthDate" value=""></label>
-        <input type="submit" value="Check Profile" name="check_profile" id="check_profile" />
+        <p><label for="txt_CardNo">Card No: <input type="text" id="txt_CardNo" name="txt_CardNo" value=""></label></p>
+        <p><label for="txt_CardID">Personal ID: <input type="text" id="txt_CardID" name="txt_CardID" value=""></label></p>
+        <p><label for="txt_BirthDate">Birth Day: <input type="text" id="txt_BirthDate" name="txt_BirthDate" value=""></label></p>
+        <p><label for="txt_MobileNo">Mobile No: <input type="text" id="txt_MobileNo" name="txt_MobileNo" value=""></label></p>
+        <p><input type="submit" value="Register" name="check_profile" id="check_profile" />
         </form>
     </div>
 </div>

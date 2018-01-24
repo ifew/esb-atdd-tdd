@@ -1,19 +1,21 @@
-﻿@{
+﻿@model RegisterModel
+@{
     ViewData["Title"] = "Register Member";
     Layout = "_Layout_confirmation";
-}
+    var registerModel = ViewData["RegisterModel"] as RegisterModel;
+ }
 
 <div class="row">
     <div class="col-md-12">
         <h2>@ViewData["Title"]</h2>
         @Html.Partial("_Header")
-        @ViewData["Desciption"]
         <div asp-validation-summary="All" class="text-danger"></div>
         <form asp-action="Confirmation" asp-controller="Register">
-        <label for="txt_CardNo">Card No: @ViewData["registerModel.txt_CardNo"]</label>
-        <label for="txt_CardID">Personal ID: @ViewData["registerModel.txt_CardID"]</label>
-        <label for="txt_BirthDate">Card No: @ViewData["registerModel.txt_BirthDate"]</label>
-        <input type="submit" value="Save" />
+        <p>Card No: @registerModel.txt_CardNo </p>
+        <p>Personal ID: @registerModel.txt_CardID </p>
+        <p>Mobile No: @registerModel.txt_MobileNo </p>
+        <p>Birth Date: @registerModel.txt_BirthDate </p>
+        <input type="submit" value="Save this Data" />
         </form>
     </div>
 </div>
