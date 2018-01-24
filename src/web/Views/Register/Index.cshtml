@@ -6,6 +6,7 @@
 <div class="row">
     <div class="col-md-12">
         <h2>@ViewData["Title"]</h2>
+        @Html.Partial("_Header")
         <div asp-validation-summary="All" class="text-danger"></div>
         <form asp-action="Confirmation" asp-controller="Register">
         <label for="txt_CardNo">Card No: <input type="text" id="txt_CardNo" name="txt_CardNo" value=""></label>
