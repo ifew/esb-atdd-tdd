@@ -27,5 +27,16 @@ namespace web.Controllers
             return View();
         }
 
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult SaveData(RegisterModel registerModel)
+        {
+            return RedirectToAction("Complete");
+        }
+
+        public IActionResult Complete()
+        {
+            return View();
+        }
+
     }
 }
