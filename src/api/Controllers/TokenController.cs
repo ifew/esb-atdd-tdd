@@ -26,16 +26,16 @@ namespace api.Controllers
       IActionResult response = Unauthorized();
       var user = Authenticate(login);
 
-      if (user != null)
+      if (user == true)
       {
-        var tokenString = BuildToken(user);
+        var tokenString = BuildToken();
         response = Ok(new { token = tokenString });
       }
 
       return response;
     }
 
-    private string BuildToken(UserModel user)
+    private string BuildToken()
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -48,28 +48,19 @@ namespace api.Controllers
         return new JwtSecurityTokenHandler().WriteToken(token);
      }
 
-     private UserModel Authenticate(LoginModel login)
+     private bool Authenticate(LoginModel login)
      {
-        UserModel user = null;
-
         if (login.Username == _config["Jwt:AppAuthUsername"] && login.Password == _config["Jwt:AppAuthPassword"])
         {
-            user = new UserModel { Name = _config["Jwt:AppAuthUsername"], Email = _config["Jwt:AppAuthEmail"]};
+            return true;
         }
-        return user;
+        return false;
      }
 
     public class LoginModel
     {
       public string Username { get; set; }
       public string Password { get; set; }
-    }
-
-    private class UserModel
-    {
-      public string Name { get; set; }
-      public string Email { get; set; }
-      public DateTime Birthdate { get; set; }
     }
   }
 }
