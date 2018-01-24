@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using api.Services;
 using Microsoft.AspNetCore.Mvc;
 using api.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers
 {
@@ -55,7 +56,7 @@ namespace api.Controllers
             return new ObjectResult(result);
         }
 
-        [HttpGet("test")]
+        [HttpGet("test"), Authorize]
         public IEnumerable<string> test()
         {
             return new string[] { "Hi this MemberService" };
