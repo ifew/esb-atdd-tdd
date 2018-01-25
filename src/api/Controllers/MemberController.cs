@@ -30,7 +30,6 @@ namespace api.Controllers
         {
             var result = _service.Get_Member_Information_By_ID(id);
             return new ObjectResult(result);
-            //return new ObjectResult("1") ;
         }
 
         [HttpGet("all", Name = "GetAll")]
@@ -40,18 +39,9 @@ namespace api.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register([FromBody] RegisterModel registerModel)
+        public IActionResult Register([FromBody] Member memberInput)
         {
-            var data = new Member
-            {
-                Fullname = "Call from API",
-                Card_no = registerModel.txt_CardNo,
-                Personal_id = registerModel.txt_CardID,
-                Birthday = DateTime.Parse(registerModel.txt_BirthDate),
-                Mobilephone = registerModel.txt_MobileNo
-            };
-
-            var result = _service.Add_Members(data);
+            var result = _service.Add_Members(memberInput);
 
             return new ObjectResult(result);
         }
