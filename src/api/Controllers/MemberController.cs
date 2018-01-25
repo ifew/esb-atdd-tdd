@@ -25,14 +25,14 @@ namespace api.Controllers
             return new string[] { "Hi this MemberService" };
         }
 
-        [HttpGet("info/{id}", Name = "GetInfo")]
+        [HttpGet("info/{id}")]
         public IActionResult GetById(string id)
         {
             var result = _service.Get_Member_Information_By_ID(id);
             return new ObjectResult(result);
         }
 
-        [HttpGet("all", Name = "GetAll")]
+        [HttpGet("all")]
         public IEnumerable<Member> GetAll()
         {
             return _service.List_Members();
@@ -43,7 +43,7 @@ namespace api.Controllers
         {
             var result = _service.Add_Members(memberInput);
 
-            return new ObjectResult(result);
+            return new ObjectResult(memberInput);
         }
 
         [HttpGet("test"), Authorize]

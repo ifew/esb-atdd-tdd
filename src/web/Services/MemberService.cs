@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -14,7 +16,7 @@ namespace web.Services
             var result = Call(url, member);
         }
 
-        static async Task<string> Call(string url, object data)
+        static async Task<Member> Call(string url, Member data)
         {
             HttpClient client = new HttpClient();
 
@@ -22,9 +24,10 @@ namespace web.Services
             var contentData = new StringContent(stringData, System.Text.Encoding.UTF8,"application/json");
             HttpResponseMessage response = client.PostAsync(url, contentData).Result;
 
-            string result = await response.Content.ReadAsStringAsync();
+            var result = await response.Content.ReadAsStringAsync();
+            var repositories = JsonConvert.DeserializeObject(result) as Member;
 
-            return result;
+            return repositories;
         }
     }
 }
