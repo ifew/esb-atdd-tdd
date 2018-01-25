@@ -17,22 +17,17 @@ namespace web.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Confirmation(RegisterModel registerModel)
+        public IActionResult Confirmation(Member member)
         {
-            ViewData["RegisterModel"] = new RegisterModel() {
-                txt_CardID = registerModel.txt_CardID,
-                txt_CardNo = registerModel.txt_CardNo,
-                txt_BirthDate = registerModel.txt_BirthDate,
-                txt_MobileNo = registerModel.txt_MobileNo
-            };
+            ViewData["memberModel"] = member;
             return View();
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult SaveData(RegisterModel registerModel)
+        public IActionResult SaveData(Member member)
         {
             var memberService = new MemberService();
-            memberService.Register(registerModel);
+            memberService.Register(member);
 
             return RedirectToAction("Complete");
         }

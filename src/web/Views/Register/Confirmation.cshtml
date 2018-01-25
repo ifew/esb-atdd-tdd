@@ -1,8 +1,8 @@
-﻿@model RegisterModel
+﻿@model Member
 @{
     ViewData["Title"] = "Register Member";
     Layout = "_Layout_confirmation";
-    var registerModel = ViewData["RegisterModel"] as RegisterModel;
+    var memberData = ViewData["Member"] as Member;
  }
 
 <div class="row">
@@ -11,14 +11,14 @@
         @Html.Partial("_Header")
         <div asp-validation-summary="All" class="text-danger"></div>
         <form asp-action="SaveData" asp-controller="Register">
-        <p>Card No: @registerModel.txt_CardNo </p>
-        <p>Personal ID: @registerModel.txt_CardID </p>
-        <p>Mobile No: @registerModel.txt_MobileNo </p>
-        <p>Birth Date: @registerModel.txt_BirthDate </p>
-        <input type="hidden" name="txt_CardNo" id="txt_CardNo" value="@registerModel.txt_CardNo" />
-        <input type="hidden" name="txt_CardID" id="txt_CardID" value="@registerModel.txt_CardID" />
-        <input type="hidden" name="txt_MobileNo" id="txt_MobileNo" value="@registerModel.txt_MobileNo" />
-        <input type="hidden" name="txt_BirthDate" id="txt_BirthDate" value="@registerModel.txt_BirthDate" />
+        <p>Card No: @memberData.Card_no </p>
+        <p>Personal ID: @memberData.Personal_id </p>
+        <p>Mobile No: @memberData.Mobilephone </p>
+        <p>Birth Date: @memberData.Birthday </p>
+        <input type="hidden" name="Card_no" id="Card_no" value="@memberData.Card_no" />
+        <input type="hidden" name="Personal_id" id="Personal_id" value="@memberData.Personal_id" />
+        <input type="hidden" name="Mobilephone" id="Mobilephone" value="@memberData.Mobilephone" />
+        <input type="hidden" name="Birthday" id="Birthday" value="@memberData.Birthday" />
         <input type="submit" value="Save this Data" />
         </form>
     </div>

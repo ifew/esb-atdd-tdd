@@ -8,10 +8,10 @@ namespace web.Services
 {
     public class MemberService
     {
-        public void Register(RegisterModel registerModel)
+        public void Register(Member member)
         {
             string url = "http://localhost:5001/api/member/register";
-            var result = Call(url, registerModel);
+            var result = Call(url, member);
         }
 
         static async Task<string> Call(string url, object data)
