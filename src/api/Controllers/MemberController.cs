@@ -20,16 +20,16 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public JsonResult Get()
         {
-            return new string[] { "Hi this MemberService" };
+            return Json("Hi this MemberService");
         }
 
         [HttpGet("info/{id}")]
-        public IActionResult GetById(string id)
+        public JsonResult GetById(string id)
         {
             var result = _service.Get_Member_Information_By_ID(id);
-            return new ObjectResult(result);
+            return Json(result);
         }
 
         [HttpGet("all")]
@@ -39,17 +39,17 @@ namespace api.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register([FromBody] Member memberInput)
+        public JsonResult Register([FromBody] Member memberInput)
         {
             var result = _service.Add_Members(memberInput);
 
-            return new ObjectResult(memberInput);
+            return Json(memberInput);
         }
 
         [HttpGet("test"), Authorize]
-        public IEnumerable<string> test()
+        public JsonResult test()
         {
-            return new string[] { "Hi this MemberService" };
+            return Json("Hi this MemberService");
         }
         
     }
