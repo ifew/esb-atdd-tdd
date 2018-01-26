@@ -27,13 +27,18 @@ namespace web.Controllers
         public IActionResult SaveData(Member member)
         {
             var memberService = new MemberService();
-            memberService.Register(member);
-
-            return RedirectToAction("Complete");
+            Member memberData = memberService.Register(member);
+            
+            //return Json(memberData);
+            return RedirectToAction("Complete", new { id = memberData.Id });
         }
 
-        public IActionResult Complete()
+        [HttpGet]
+        public IActionResult Complete(string id)
         {
+            var memberService = new MemberService();
+            ViewData["memberModel"] = memberService.Get_Member_Info(id);
+
             return View();
         }
 
