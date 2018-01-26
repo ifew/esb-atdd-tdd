@@ -1,11 +1,22 @@
-﻿@{
+﻿@model Member
+@{
     ViewData["Title"] = "Register Member";
     Layout = "_Layout_confirmation";
+    var memberData = ViewData["memberModel"] as Member;
  }
 
 <div class="row">
     <div class="col-md-12">
         <h2>@ViewData["Title"]</h2>
         ขอบคุณค่ะ ท่านได้ลงทะเบียน Umayplus เรียบร้อยแล้วค่ะ
+        <h3>ข้อมูลของคุณคือ</h3>
+        <ul>
+            <li>ID: @memberData.Id</li>
+            <li>Fullname: @memberData.Fullname</li>
+            <li>Card No: @memberData.Card_no</li>
+            <li>Personal ID: @memberData.Personal_id</li>
+            <li>Birthday: @memberData.Birthday</li>
+            <li>Mobile No: @memberData.Mobilephone</li>
+        </ul>
     </div>
 </div>
