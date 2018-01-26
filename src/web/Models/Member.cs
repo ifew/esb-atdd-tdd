@@ -26,8 +26,7 @@ namespace web.Models
 
         [Column("birthday")]
         [Required(ErrorMessage = "กรุณาระบุวันเดือนปีเกิดค่ะ")]
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "กรุณากรอกข้อมูล ค.ศ-เดือน-วัน เช่น 1980-12-31")]
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         [Column("mobilephone")]
         [Required(ErrorMessage = "กรุณาระบุหมายเลขเบอร์โทรศัพท์ค่ะ")]

@@ -26,7 +26,6 @@ namespace api.Models
 
         [Column("birthday")]
         [Required(ErrorMessage = "กรุณาระบุวันเดือนปีเกิดค่ะ")]
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "กรุณากรอกข้อมูล วัน/เดือน/ปี พ.ศ.")]
         public DateTime Birthday { get; set; }
 
         [Column("mobilephone")]
