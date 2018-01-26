@@ -27,15 +27,7 @@ namespace api.Services
 
         public Member Add_Members(Member data)
         {
-            CultureInfo MyCultureInfo = new CultureInfo("en-US");
-            
-            _context.Add(new Member {
-                Fullname = data.Fullname,
-                Card_no = data.Card_no,
-                Personal_id = data.Personal_id,
-                Mobilephone = data.Mobilephone,
-                Birthday = DateTime.ParseExact(data.Birthday, "d", MyCultureInfo).ToString()
-            });
+            _context.Add(data);
             _context.SaveChanges();
 
             return data;
