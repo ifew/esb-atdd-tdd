@@ -30,7 +30,9 @@ namespace api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MemberContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<UtilityContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<MemberService, MemberService>();
+            services.AddScoped<UtilityService, UtilityService>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
                 {
