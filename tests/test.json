@@ -1,0 +1,52 @@
+{
+	"info": {
+		"name": "Lab EasyBuy Workshop",
+		"_postman_id": "68e94502-45e8-a5b2-dd85-a85f624f6db9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api-register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "92569028-0f47-4ad2-ac92-227e816986c0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"UmayId\": \"6237885053341539\"\n}"
+				},
+				"url": {
+					"raw": "{{hostname}}:5000/api/register/6237885053341539",
+					"host": [
+						"{{hostname}}"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"register",
+						"6237885053341539"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
